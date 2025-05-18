@@ -8,14 +8,19 @@ import { makeSyncExitRunner } from '~lib/make-sync-exit-runner'
 import { unreachable } from '~test-utils/unreachable'
 
 describe('dom integration flow', () => {
-  const runDomFlow = makeSyncExitRunner(
-    (tag: keyof HTMLElementTagNameMap, className: string) => pipe(
-      create(tag),
-      Effect.tap((el) => Effect.sync(() => el.classList.add(className))),
-      Effect.tap(appendToBody),
-      Effect.flatMap(_ => findOne<HTMLElement>(`.${className}`)),
-    )
-  )
+  const domFlow: (
+    tag: keyof HTMLElementTagNameMap,
+    className: string
+  ) => Effect.Effect<HTMLElement, never, never> = (tag, className) =>
+      pipe(
+        create(tag),
+        Effect.tap((el) => Effect.sync(() => el.classList.add(className))),
+        Effect.tap(appendToBody),
+        Effect.flatMap((): Effect.Effect<HTMLElement, never, never> =>
+          findOne<HTMLElement>(`.${className}`)
+        )
+      )
+  const runDomFlow = makeSyncExitRunner(domFlow)
 
   it('creates, appends, and finds a single element', () => {
     const result = runDomFlow('span', 'test-class')

@@ -1,6 +1,7 @@
 import { Effect, Exit } from 'effect'
 import { describe, it, expect } from 'vitest'
 import { makeSyncExitRunner } from './make-sync-exit-runner'
+import { unreachable } from '~test-utils/unreachable'
 
 describe('makeSyncExitRunner', () => {
   it('returns Exit.success when Effect succeeds', () => {
@@ -11,6 +12,8 @@ describe('makeSyncExitRunner', () => {
     expect(Exit.isSuccess(result)).toBe(true)
     if (Exit.isSuccess(result)) {
       expect(result.value).toBe(10)
+    } else {
+      unreachable()
     }
   })
 
@@ -22,6 +25,8 @@ describe('makeSyncExitRunner', () => {
     expect(Exit.isFailure(result)).toBe(true)
     if (Exit.isFailure(result)) {
       expect(result.cause._tag).toBe('Fail')
+    } else {
+      unreachable()
     }
   })
 })
