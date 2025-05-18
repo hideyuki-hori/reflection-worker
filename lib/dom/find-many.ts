@@ -1,5 +1,5 @@
 import { Effect } from 'effect'
-import { elementNotFound } from 'models/element-not-found-error'
+import { elementNotFound } from '~domain/element-not-found-error'
 
 export function findMany<T extends Element>(selector: string) {
   const elements = document.querySelectorAll<T>(selector)

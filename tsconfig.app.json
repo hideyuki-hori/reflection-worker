@@ -33,8 +33,8 @@
       "~lib/*": [
         "lib/*"
       ],
-      "~models/*": [
-        "models/*"
+      "~domain/*": [
+        "domain/*"
       ],
       "~panda/*": [
         "styled-system/*"
@@ -49,6 +49,6 @@
   },
   "include": [
     "app",
-    "models"
+    "domain"
 , "lib"  ]
 }
