@@ -6,20 +6,18 @@ import { findOne } from '~lib/dom/find-one'
 import { findMany } from '~lib/dom/find-many'
 import { makeSyncExitRunner } from '~lib/make-sync-exit-runner'
 import { unreachable } from '~test-utils/unreachable'
+import type { ElementNotFoundError } from '~domain/element-not-found-error'
 
 describe('dom integration flow', () => {
-  const domFlow: (
+  const domFlow = (
     tag: keyof HTMLElementTagNameMap,
     className: string
-  ) => Effect.Effect<HTMLElement, never, never> = (tag, className) =>
-      pipe(
-        create(tag),
-        Effect.tap((el) => Effect.sync(() => el.classList.add(className))),
-        Effect.tap(appendToBody),
-        Effect.flatMap((): Effect.Effect<HTMLElement, never, never> =>
-          findOne<HTMLElement>(`.${className}`)
-        )
-      )
+  ): Effect.Effect<HTMLElement, ElementNotFoundError, never> => pipe(
+    create(tag),
+    Effect.tap((el) => Effect.sync(() => el.classList.add(className))),
+    Effect.tap(appendToBody),
+    Effect.flatMap(() => findOne<HTMLElement>(`.${className}`))
+  )
   const runDomFlow = makeSyncExitRunner(domFlow)
 
   it('creates, appends, and finds a single element', () => {
