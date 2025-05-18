@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest'
 import { Exit, Effect, pipe } from 'effect'
-import type { ElementNotFoundError } from '~domain/element-not-found-error'
-import { appendToBody } from '~lib/dom/append-to-body'
-import { create } from '~lib/dom/create'
-import { findOne } from '~lib/dom/find-one'
-import { findMany } from '~lib/dom/find-many'
-import { makeSyncExitRunner } from '~lib/make-sync-exit-runner'
+import type { ElementNotFoundError } from '~domain/dom'
+import { appendToBody } from '~infrastructure/dom/append-to-body'
+import { create } from '~infrastructure/dom/create'
+import { findOne } from '~infrastructure/dom/find-one'
+import { findMany } from '~infrastructure/dom/find-many'
+import { makeSyncExitRunner } from '~infrastructure/effect/make-sync-exit-runner'
 import { unreachable } from '~test-utils/unreachable'
 
 describe('dom integration flow', () => {

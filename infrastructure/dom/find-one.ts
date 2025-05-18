@@ -1,7 +1,8 @@
 import { Effect } from 'effect'
-import { elementNotFound } from '~domain/element-not-found-error'
+import type { FindOne } from '~domain/dom'
+import { elementNotFound } from './internal'
 
-export function findOne<T extends Element>(selector: string) {
+export const findOne: FindOne = <T extends Element>(selector: string) => {
   const element = document.querySelector<T>(selector)
   return !!element
     ? Effect.succeed(element)

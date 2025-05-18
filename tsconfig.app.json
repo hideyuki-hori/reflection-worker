@@ -30,8 +30,8 @@
       "~app/*": [
         "app/*"
       ],
-      "~lib/*": [
-        "lib/*"
+      "~infrastructure/*": [
+        "infrastructure/*"
       ],
       "~domain/*": [
         "domain/*"
@@ -49,6 +49,7 @@
   },
   "include": [
     "app",
-    "domain"
-, "lib"  ]
+    "domain",
+    "infrastructure"
+  ]
 }

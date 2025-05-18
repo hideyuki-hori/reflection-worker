@@ -1,6 +1,6 @@
 import { Cause, Effect, Exit, pipe } from 'effect'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { ElementNotFoundError } from '~domain/element-not-found-error'
+import { ElementNotFoundError } from '~domain/dom'
 import { unreachable } from 'test-utils/unreachable'
 import { findMany } from './find-many'
 
