@@ -2,7 +2,10 @@ import { defineConfig } from '@pandacss/dev'
 
 export default defineConfig({
   preflight: true,
-  include: ['./src/**/*.{js,jsx,ts,tsx}'],
+  include: [
+    './app/**/*.{js,jsx,ts,tsx}',
+    './lib/**/*.{js,jsx,ts,tsx}',
+  ],
   exclude: [],
   jsxFramework: 'solid',
   theme: {

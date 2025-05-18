@@ -27,18 +27,28 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "src/*"
+      "~app/*": [
+        "app/*"
       ],
-      "panda/*": [
+      "~lib/*": [
+        "lib/*"
+      ],
+      "~models/*": [
+        "models/*"
+      ],
+      "~panda/*": [
         "styled-system/*"
-      ]
+      ],
+      "~test-utils/*": [
+        "test-utils/*"
+      ],
     },
     "types": [
       "@webgpu/types"
     ]
   },
   "include": [
-    "src"
-  ]
+    "app",
+    "models"
+, "lib"  ]
 }
