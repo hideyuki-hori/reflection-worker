@@ -4,7 +4,7 @@ export default defineConfig({
   preflight: true,
   include: [
     './app/**/*.{js,jsx,ts,tsx}',
-    './platform/**/*.{js,jsx,ts,tsx}',
+    './infrastructure/**/*.{js,jsx,ts,tsx}',
   ],
   exclude: [],
   jsxFramework: 'solid',
