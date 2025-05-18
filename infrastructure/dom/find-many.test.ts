@@ -1,15 +1,13 @@
-import { Cause, Effect, Exit, pipe } from 'effect'
+import { Cause, Exit } from 'effect'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { ElementNotFoundError } from '~domain/dom'
+import { makeSyncExitRunner } from '~domain/effect'
 import { unreachable } from 'test-utils/unreachable'
 import { findMany } from './find-many'
 
 describe('findMany', () => {
   const container = document.createElement('div')
-  const runFindMany = <T extends HTMLElement>(selector: string) => pipe(
-    findMany<T>(selector),
-    Effect.runSyncExit,
-  )
+  const runFindMany = makeSyncExitRunner(findMany)
   beforeEach(() => {
     container.innerHTML = `
       <span class="many">1</span>

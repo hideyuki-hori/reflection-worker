@@ -1,6 +1,6 @@
 import { Exit } from 'effect'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { makeSyncExitRunner } from '~infrastructure/effect/make-sync-exit-runner'
+import { makeSyncExitRunner } from '~domain/effect'
 import { unreachable } from '~test-utils/unreachable'
 import { appendToBody } from './append-to-body'
 

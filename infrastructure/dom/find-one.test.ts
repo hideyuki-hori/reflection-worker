@@ -1,7 +1,7 @@
 import { Cause, Exit } from 'effect'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { ElementNotFoundError } from '~domain/dom'
-import { makeSyncExitRunner } from '~infrastructure/effect/make-sync-exit-runner'
+import { makeSyncExitRunner } from '~domain/effect'
 import { unreachable } from '~test-utils/unreachable'
 import { findOne } from './find-one'
 
